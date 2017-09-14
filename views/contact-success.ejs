@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome</title>
+	<link rel="stylesheet" type="text/css" href="/styles/style.css">
+</head>
+<body>
+	<% include partials/nav.ejs %>
+	<h1>we have successfully received your information.</h1>
+	<p>We Are Awesomez</p>
+
+	<p>Name: <strong><%= data.name %></strong></p>
+	<p>Department: <strong><%= data.dept %></strong></p>
+	<p>Email: <strong style="text-transform: none"><%= data.email %></strong></p>
+</body>
+</html>

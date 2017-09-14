@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Todo</title>
+	<link rel="stylesheet" type="text/css" href="/styles/style.css">
+	<script
+	  src="https://code.jquery.com/jquery-3.2.1.min.js"
+	  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+	  crossorigin="anonymous"></script>
+</head>
+<body>
+	<% include partials/nav.ejs %>
+	<h1>Welcome to the Todo application</h1>
+	<% if(msg.postErr){ %>
+		<small><%= msg.postErr %></small>
+	<% } %>
+	<form id="todo" action="/todo" method="post">
+		<input autofocus type="text" name="item">
+		<button type="submit">Add New ITEM</button>
+	</form>
+	<ul id="todoList">
+		<% data.forEach(function(item){ %>
+			<li> <%= item.item %>
+		<% }); %>
+	</ul>
+
+	<script type="text/javascript">
+		$("#todoList li").click(function(e){
+			var item = $(this).text().trim();
+			$.ajax({
+			    url: '/todo',
+			    type: 'DELETE',
+			    data: {item:item},
+			    success: function(res) {
+			    	if (res == "done") {
+			    		$(e.target).remove();
+			    	}
+			        
+			    }
+			});
+		});
+	</script>
+</body>
+</html>

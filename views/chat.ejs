@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Profiles</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="/styles/style.css">
+</head>
+
+<body>
+	<% include partials/nav.ejs %>
+	<h1 style="color:white">Welcome <span id="name"></span></h1>
+
+	<div align='center' class="outer">
+		<div class="inner">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="chatbox">
+						<div class="onlineUsers">
+							<ul class="onlineUserslist">
+
+							</ul>
+						</div>
+						<div class="chatDiv">
+							<ul class="chat">
+
+							</ul>
+						</div>
+					</div>
+					<div class="sendbox marginTop10">
+						<form onsubmit=msgFormSubmit(event); id="msgForm">
+							<div class="col-sm-10 padding0 marginTop10">
+								<input autocomplete="off" disabled class="form-control readyToMsg" required type="text" name="msg" id="msg">
+							</div>
+							<div class="col-sm-2 padding0 marginTop10">
+								<button disabled type="submit" class="btn btn-success btn-block readyToMsg">Send</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--name Modal  -->
+
+	<div align="left" id="nameModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<form align="left" id="nameForm">
+					<div class="modal-header">
+						<!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+						<h4 class="modal-title">Please Enter Your Name:</h4>
+					</div>
+					<div class="modal-body">
+						<div class="form-group">
+							<label for="usr">Name:</label>
+							<input required="true" autofocus type="text" class="form-control" id="usr">
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-success">Submit</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+	<!--jquery  -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!--bootstrap  -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!--socket.io  -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+	<script src="/js/chat.js"></script>
+</body>
+
+</html>

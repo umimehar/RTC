@@ -1,0 +1,123 @@
+body{
+	background: skyblue;
+	text-align: center;
+	/* color: white; */
+	font-size: 200%;
+}
+strong{
+	text-transform: capitalize;
+}
+input{
+	width: 400px;
+	font-size: 20px;
+}
+form:not(#nameForm){
+	text-align: center
+}
+input[type=submit]{
+	margin-top: 10px;
+	font-size: 25px;
+}
+#todoList li:hover{
+	text-decoration: line-through;
+	cursor: pointer;
+}
+nav ul li{
+	list-style: none;
+	display: inline-block;
+	margin: 0 10px;
+}
+.outer{
+	text-align: center;
+	min-height: 500px;
+	width: 100%;
+
+}
+.inner{
+	height: 100%;
+	min-height: 500px!important;
+	min-width: 350px;
+	width: 60%;
+	background:skyblue;
+	border-radius: 4px;
+	min-height: 90%;
+	margin: 0 auto;
+}
+#nameModal{
+	color: black;
+}
+.chatbox{
+	height: 466px;
+	background: #eee;
+	width: 100%;
+}
+.sendbox{
+	height: 34px;
+	background: skyblue;
+	width: 100%;
+}
+.padding0{
+	padding: 0;
+}
+.onlineUserslist{
+	list-style: none;
+	padding-left: 0;
+	margin-bottom: 0;
+}
+.onlineUserslist li{
+	text-transform: capitalize;
+}
+.onlineUserslist li:hover{
+	background: #ddd;
+	color: skyblue;
+	cursor: pointer;
+}
+#name{
+	text-transform: capitalize
+}
+.onlineUsers{
+	/* display: none; */
+	overflow: auto;
+}
+.chatDiv{
+	display: none;
+	margin-bottom: 0;
+	height: 100%;
+}
+.chat{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	overflow: auto;
+	height: 92%;
+
+}
+.chat li{
+	text-align: left;
+	margin-left: 10px;
+}
+
+ul.onlineUserslist li:before{
+    content: "•";
+    margin-right: 10px;
+    font-weight: bold;
+    color: #00FF00;
+}
+
+ @media only screen and (max-width : 768px) {
+	 .sendbox{
+		height: 75px;
+	}
+	.chatbox{
+		height: 435px;
+	}
+	#msgForm{
+		/* border:1px solid blue; */
+		padding-bottom: 5px;
+		border-radius: 3px;
+		padding-top: -5px;
+	}
+	.marginTop10{
+		margin-top: 5px;
+	}
+ }

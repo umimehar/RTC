@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome</title>
+	<link rel="stylesheet" type="text/css" href="/styles/style.css">
+</head>
+<body>
+	<% include partials/nav.ejs %>
+	<h1>Contact Us</h1>
+	<p>We Are Awesomez</p>
+
+	<form id="contactForm" method="post" action="/contact">
+		<label for="name">Name:</label>
+		<input type="text" name="name"><br>
+		<label for="dept">Department:</label>
+		<input type="text" name="dept"><br>
+		<label for="email">Email:</label>
+		<input type="text" name="email"><br>
+		<input type="submit">
+	</form>
+</body>
+</html>

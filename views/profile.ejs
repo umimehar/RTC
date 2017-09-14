@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Profiles</title>
+	<link rel="stylesheet" type="text/css" href="/styles/style.css">
+</head>
+<body>
+	<% include partials/nav.ejs %>
+	<h1>Welcome to the Profile of <strong><%= name %></strong></h1>
+	<% if (name == 'umer') { %>
+	<p>Age: <strong><%= data.age %></strong></p>
+	<p>Job: <strong><%= data.job %></strong></p>
+	<% } %>
+	<ul>
+		<h2>HOBBIES</h2>
+		<% data.hobbies.forEach(function(item){ %>
+			<li> <%= item %> </li>
+		<% }); %>
+	</ul>
+</body>
+</html>
