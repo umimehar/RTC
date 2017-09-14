@@ -6,7 +6,7 @@ var chatController = require('./controllers/chat.controller');
 
 var app = express();
 
-
+app.set('port', process.env.PORT || 3000);
 
 //setting template engine
 app.set("view engine", 'ejs');
@@ -18,8 +18,8 @@ webController(app);
 todoController(app);
 
 
-var server = app.listen(3000, function(){
-   console.log("Server is running on 3000 port."); 
+var server = app.listen(app.get('port'), function(){
+   console.log("Server is running on "+app.get('port')+" port."); 
 });
 
 chatController(app, server);
