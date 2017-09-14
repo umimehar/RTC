@@ -1,0 +1,11 @@
+{
+    "name": "socket chat sample",
+    "description": "This app does one little thing, and does it well.",
+    "keywords": [
+      "socket",
+      "app",
+      "chat"
+    ],
+    "website": "https://umimehar.herokuapp.com/",
+    "repository": "https://github.com/umimehar/RTC.git"
+}
