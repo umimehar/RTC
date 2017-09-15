@@ -103,6 +103,46 @@ ul.onlineUserslist li:before{
     font-weight: bold;
     color: #00FF00;
 }
+.videobtn{
+	position: absolute;
+	top: 2px;
+	right: 2.5px;
+}
+.videoStream{
+	display: none;
+	padding: 0;
+    margin: 0;
+    overflow: auto;
+    height: 92%;
+}
+.ourvideo{
+	border-right: 1px solid black;
+	height: 100%;
+}
+.hisvideo{
+	height: 100%;
+}
+#video{
+	transform: rotateY(180deg);
+	-webkit-transform:rotateY(180deg); /* Safari and Chrome */
+	-moz-transform:rotateY(180deg); /* Firefox */
+}
+#play{
+	width: 100%!important;
+	height: auto!important;
+	transform: rotateY(180deg);
+	-webkit-transform:rotateY(180deg); /* Safari and Chrome */
+	-moz-transform:rotateY(180deg); 
+}
+canvas{
+	transform: rotateY(180deg);
+	-webkit-transform:rotateY(180deg); /* Safari and Chrome */
+	-moz-transform:rotateY(180deg); 
+	width: 100%;
+    height: auto!important;
+	min-height: 150px;
+	display: none;
+}
 
  @media only screen and (max-width : 768px) {
 	 .sendbox{

@@ -3,7 +3,11 @@ var socket = "";
 var usrName = "";
 var booool=0;
 $("document").ready(function(){
-    socket = io.connect();
+    socket = io.connect({
+        'reconnection': true,
+        'reconnectionDelay': 500,
+        'reconnectionAttempts': 10
+      });
     socket.on('connect', function(){
         console.log('connected');
         if(!localStorage['usrName']){
@@ -59,6 +63,28 @@ $("document").ready(function(){
             $(".onlineUserslist").append("<li onclick=\"onetoOneChat('"+data[i].socket_id+"','"+data[i].name+"','"+socket.id+"')\">"+data[i].name+"</li>");
         }
         
+    });
+
+    var startStream = 0;
+
+    socket.on("incommingStream", function(data){
+        if (!startStream) {
+            $(".onlineUsers").hide();
+            $(".chatDiv").show();
+            $(".chat").hide();
+            $(".name").text(data.data.sender_name)
+            console.log(data);
+            startStream = 1;
+        }
+        
+
+        // console.log(data);
+
+        
+        
+        $(".videoStream").show();
+        var img = document.getElementById("play");
+        img.src = data.stream;
     });
     
     socket.on("message",function(data){
@@ -134,3 +160,56 @@ function msgFormSubmit(e) {
     var height = wtf[0].scrollHeight;
     wtf.scrollTop(height);
 }
+function startVideoCall() {
+    var data = JSON.parse($("input[name=data]").val());
+    $(".chat").hide();
+    $(".videoStream").show();
+    $(".name").text(data.receiver_name);
+
+    var video = document.getElementById("video");
+
+    var canvas = document.getElementById("preview");
+    var context = canvas.getContext("2d");
+
+    
+    canvas.width=canvas.parentElement.clientWidth;
+    canvas.height = 250;
+    console.log(video.height);
+
+    context.width = canvas.width;
+    context.height = canvas.height;
+
+    
+
+    navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msgGetUserMedia);
+
+    if(navigator.getUserMedia){
+        navigator.getUserMedia({video:true, audio:true}, loadCam, loadFail);
+    }
+
+    function loadCam(stream) {
+        video.src = window.URL.createObjectURL(stream);
+        setInterval(function(){
+            viewVideo(video, context);
+        },90);
+        console.log("Cam load success");
+    }
+    function loadFail() {
+        console.log("load Fail");
+    }
+    function viewVideo(video, context) {
+        context.drawImage(video, 0,0, context.width, context.height);
+        socket.emit("stream", {
+            stream: canvas.toDataURL('image/webp'),
+            data: data
+        });
+    }
+   
+
+}
+
+
+
+
+
+

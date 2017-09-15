@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Profiles</title>
+	<title>RTC Chat</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -27,12 +27,25 @@
 							<ul class="chat">
 
 							</ul>
+
+							<div class="videoStream">
+								<div class="ourvideo col-sm-6">
+									<p>Your cam</p>
+									<video id="video" src="" style="width:100%;height:auto" autoplay></video>
+								</div>
+								<div class="hisvideo col-sm-6">
+									<p ><strong class="name"></strong>'s cam</p>
+									<canvas id="preview"></canvas>
+									<img src="" id="play">
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="sendbox marginTop10">
 						<form onsubmit=msgFormSubmit(event); id="msgForm">
 							<div class="col-sm-10 padding0 marginTop10">
 								<input autocomplete="off" disabled class="form-control readyToMsg" required type="text" name="msg" id="msg">
+								<button disabled onclick="startVideoCall()" type="button" class="btn btn-info btn-sm readyToMsg videobtn">video</button>
 							</div>
 							<div class="col-sm-2 padding0 marginTop10">
 								<button disabled type="submit" class="btn btn-success btn-block readyToMsg">Send</button>

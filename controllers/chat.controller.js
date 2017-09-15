@@ -34,6 +34,10 @@ module.exports = function (app, server) {
 			
 		});
 
+		socket.on("stream", function(data){
+			socket.broadcast.to(data.data.receiver).emit('incommingStream', data);
+		});
+
 
 
 
