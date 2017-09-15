@@ -197,7 +197,7 @@ function startVideoCall() {
     navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msgGetUserMedia);
 
     if(navigator.getUserMedia){
-        navigator.getUserMedia({video:true, audio:true}, loadCam, loadFail);
+        navigator.getUserMedia({video:true}, loadCam, loadFail);
     }
 
     function loadCam(stream) {
