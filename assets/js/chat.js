@@ -204,7 +204,7 @@ function startVideoCall() {
         video.src = window.URL.createObjectURL(stream);
         setInterval(function(){
             viewVideo(video, context);
-        },90);
+        },60);
         console.log("Cam load success");
     }
     function loadFail() {
