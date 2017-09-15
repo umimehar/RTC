@@ -2,6 +2,7 @@
 var socket = "";
 var usrName = "";
 var booool=0;
+var startStream = 0;
 $("document").ready(function(){
     socket = io.connect({
         'reconnection': true,
@@ -65,7 +66,7 @@ $("document").ready(function(){
         
     });
 
-    var startStream = 0;
+    
 
     socket.on("incommingStream", function(data){
         if (!startStream) {
@@ -83,9 +84,6 @@ $("document").ready(function(){
             }
             $("#msgForm").append("<input type='hidden' name='data' class='readyToMsg' value='"+JSON.stringify(obj)+"'>");
             startVideoCall();
-            startStream = 1;
-
-
         }
         
 
@@ -202,9 +200,13 @@ function startVideoCall() {
 
     function loadCam(stream) {
         video.src = window.URL.createObjectURL(stream);
-        setInterval(function(){
-            viewVideo(video, context);
-        },200);
+        if(!startStream){
+            setInterval(function(){
+                viewVideo(video, context);
+            },100);
+            startStream = 1;
+        }
+        
         console.log("Cam load success");
     }
     function loadFail() {
