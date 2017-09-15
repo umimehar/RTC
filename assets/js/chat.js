@@ -83,7 +83,8 @@ $("document").ready(function(){
                 sender_name: data.data.receiver_name,
             }
             $("#msgForm").append("<input type='hidden' name='data' class='readyToMsg' value='"+JSON.stringify(obj)+"'>");
-            startVideoCall();
+            // startVideoCall();
+            startStream = 1;
         }
         
 
@@ -200,12 +201,10 @@ function startVideoCall() {
 
     function loadCam(stream) {
         video.src = window.URL.createObjectURL(stream);
-        if(!startStream){
-            setInterval(function(){
-                viewVideo(video, context);
-            },100);
-            startStream = 1;
-        }
+        setInterval(function(){
+            viewVideo(video, context);
+        },100);
+       
         
         console.log("Cam load success");
     }
