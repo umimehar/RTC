@@ -74,7 +74,18 @@ $("document").ready(function(){
             $(".chat").hide();
             $(".name").text(data.data.sender_name)
             console.log(data);
+
+            var obj = {
+                receiver: data.data.sender,
+                receiver_name: data.data.sender_name,
+                sender: data.data.receiver,
+                sender_name: data.data.receiver_name,
+            }
+            $("#msgForm").append("<input type='hidden' name='data' class='readyToMsg' value='"+JSON.stringify(obj)+"'>");
+            startVideoCall();
             startStream = 1;
+
+
         }
         
 
@@ -85,6 +96,8 @@ $("document").ready(function(){
         $(".videoStream").show();
         var img = document.getElementById("play");
         img.src = data.stream;
+
+
     });
     
     socket.on("message",function(data){
