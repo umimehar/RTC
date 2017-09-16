@@ -180,44 +180,20 @@ function startVideoCall() {
 
     var video = document.getElementById("video");
 
-    var canvas = document.getElementById("preview");
-    var context = canvas.getContext("2d");
-
-    
-    canvas.width=canvas.parentElement.clientWidth;
-    canvas.height = 250;
-    console.log(video.height);
-
-    context.width = canvas.width;
-    context.height = canvas.height;
-
-    
-
-    navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msgGetUserMedia);
+    navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msgGetUserMedia || navigator.mediaDevices.getUserMedia);
 
     if(navigator.getUserMedia){
-        navigator.getUserMedia({video:true}, loadCam, loadFail);
+        navigator.getUserMedia({video:true}, function (stream) {
+            socket.emit("stream", {
+                stream: canvas.toDataURL('image/webp'),
+                data: data
+            });
+        }, function (err) {
+            console.log("Err: ",err);
+        }); 
     }
 
-    function loadCam(stream) {
-        video.src = window.URL.createObjectURL(stream);
-        setInterval(function(){
-            viewVideo(video, context);
-        },90);
-       
-        
-        console.log("Cam load success");
-    }
-    function loadFail() {
-        console.log("load Fail");
-    }
-    function viewVideo(video, context) {
-        context.drawImage(video, 0,0, context.width, context.height);
-        socket.emit("stream", {
-            stream: canvas.toDataURL('image/webp'),
-            data: data
-        });
-    }
+
    
 
 }
