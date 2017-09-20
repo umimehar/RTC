@@ -122,11 +122,11 @@ ul.onlineUserslist li:before{
 .hisvideo{
 	height: 100%;
 }
-#video{
+/* #video{
 	transform: rotateY(180deg);
-	-webkit-transform:rotateY(180deg); /* Safari and Chrome */
-	-moz-transform:rotateY(180deg); /* Firefox */
-}
+	-webkit-transform:rotateY(180deg);
+	-moz-transform:rotateY(180deg);
+} */
 #play{
 	width: 100%!important;
 	height: auto!important;

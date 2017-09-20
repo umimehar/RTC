@@ -180,16 +180,39 @@ function startVideoCall() {
 
     var video = document.getElementById("video");
 
-    navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msgGetUserMedia || navigator.mediaDevices.getUserMedia);
+    navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.mediaDevices.getUserMedia);
 
     if(navigator.getUserMedia){
-        navigator.getUserMedia({video:true}, function (stream) {
-            socket.emit("stream", {
-                stream: canvas.toDataURL('image/webp'),
-                data: data
-            });
+        var hdConstraints = {
+            video: {
+              mandatory: {
+                minWidth: 1280,
+                minHeight: 720
+              }
+            },
+            audio:true
+          };
+          var vgaConstraints = {
+            video: {
+              mandatory: {
+                maxWidth: 640,
+                maxHeight: 360
+              }
+            }
+          };
+        navigator.getUserMedia(hdConstraints, function (stream) {
+            video.src = window.URL.createObjectURL(stream);
+            // socket.emit("stream", {
+            //     stream: canvas.toDataURL('image/webp'),
+            //     data: data
+            // });
+
+            video.onloadedmetadata = function(e) {
+                console.log("Video Loaded");
+            };
         }, function (err) {
             console.log("Err: ",err);
+            video.src = 'fallbackvideo.webm';
         }); 
     }
 

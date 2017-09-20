@@ -4,16 +4,17 @@
   "description": "for practicing node",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : "budo js/chat.js:bundle.js"
   },
   "engines": {
-  	"node": "6.11.3"
+    "node": "6.11.3"
   },
   "keywords": [
-  	"chat",
-  	"practice",
-  	"sockets"
-  ], 
+    "chat",
+    "practice",
+    "sockets"
+  ],
   "author": "umer aslam",
   "license": "ISC",
   "dependencies": {
@@ -21,6 +22,7 @@
     "ejs": "^2.5.7",
     "express": "^4.15.4",
     "mongoose": "^4.11.8",
+    "simple-peer": "^8.1.1",
     "socket.io": "^2.0.3"
   }
 }
