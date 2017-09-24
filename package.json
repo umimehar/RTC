@@ -1,7 +1,7 @@
 {
   "name": "practice",
   "version": "1.0.0",
-  "description": "for practicing node",
+  "description": "for practicing node its a one to one chat application in webRTC",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
